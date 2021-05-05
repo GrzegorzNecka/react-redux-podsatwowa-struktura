@@ -1,8 +1,9 @@
 import InitialState from "./InitialState";
 
-const rootReducer = (state = InitialState, action) => {
+// eslint-disable-next-line
+const rootReducer = (state = initialState, action) => {
   console.log(action);
- 
+  return state;
 };
 
 export default rootReducer;
