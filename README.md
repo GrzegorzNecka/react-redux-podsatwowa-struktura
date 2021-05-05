@@ -1,3 +1,3 @@
-# react-redux-podsatwowa-struktura
+[redux](https://redux.js.org/introduction/getting-started/)
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-redux-podsatwowa-struktura)
+[eduweb](https://eduweb.pl/programowanie-i-www/reactjs/react-w-praktyce/konfiguracja-react-redux)
