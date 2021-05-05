@@ -1,7 +1,7 @@
 import InitialState from "./InitialState";
 
 const rootReducer = (state = InitialState, action) => {
-  console.log(state);
+  console.log(action);
 };
 
 export default rootReducer;
