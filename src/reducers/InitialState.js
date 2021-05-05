@@ -1,4 +1,4 @@
-const initialState = {
+const InitialState = {
   twitters: [
     {
       id: 1,
@@ -53,3 +53,5 @@ const initialState = {
     }
   ]
 };
+
+export default InitialState;
