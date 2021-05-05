@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Provider from "react-redux";
-import App from "./App";
+import Root from "./Root";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Root />, document.getElementById("root"));
