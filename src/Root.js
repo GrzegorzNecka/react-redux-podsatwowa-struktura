@@ -1,14 +1,24 @@
 import React from "react";
-import Provider from "react-redux";
-import store from "./store/index.js";
+import { createStore } from "redux";
 import App from "./App";
 
+const initialMovies = {
+  movies: ["Rambo III", "Hakerzy", "Matrix"]
+};
+
+function moviesReducer(state = initialMovies, action) {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
+const store = createStore(moviesReducer);
+
+window.store = store;
+
 const Root = () => {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  return <App />;
 };
 
 export default Root;
