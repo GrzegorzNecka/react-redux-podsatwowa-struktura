@@ -1,12 +1,17 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-
-export default function App() {
+export default function App({ state }) {
+  console.log(state);
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+      <p>{JSON.stringify(state)}</p>
+
+      <ul>
+        {state.movies.map((item, i) => {
+          return <li key={i}> {item}</li>;
+        })}
+      </ul>
     </div>
   );
 }

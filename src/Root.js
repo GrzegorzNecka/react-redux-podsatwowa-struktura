@@ -24,11 +24,12 @@ function initialReducer(state = initialMovies, action) {
 
 // -------------------- STORE ------------------------- //
 const store = createStore(initialReducer);
-
 console.log(store);
 
+// -------------------- DISPATCH ------------------------- //
+
 const Root = () => {
-  return <App />;
+  return <App state={store.getState()} />;
 };
 
 export default Root;
