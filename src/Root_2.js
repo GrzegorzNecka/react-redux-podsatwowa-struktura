@@ -1,26 +1,23 @@
 import React from 'react';
-import { createStore, combineReducers, bindActionCreators } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import App from './App';
-import store from './store';
-import { Provider } from 'react-redux';
 
-// -------------------- STATE ------------------------- //
+// -------------------- STATES ------------------------- //
 
 const initialMovies = {
-  listName: ' Best Movies ',
   list: ['Rambo III', 'Hakerzy', 'Matrix']
 };
 
 const initialActors = {
-  listName: 'Best Actors ',
+  listName: 'Best',
   list: ['Tom Hardy', 'Julia Roberts', 'Angelina Jolie']
 };
 
-// -------------------- REDUCERS ------------------------- //
+// -------------------- REDUCER ------------------------- //
 
-//{...state} - {movies: ['Rambo III', 'Hakerzy', 'Matrix']}
-//state.movies - ['Rambo III', 'Hakerzy', 'Matrix']
-//action.movie - Titanic
+//{...state} - {list: ['Rambo III', 'Hakerzy', 'Matrix']}
+//state.list - ['Rambo III', 'Hakerzy', 'Matrix']
+//action.item - Titanic
 
 function moviesReducer(state = initialMovies, action) {
   switch (action.type) {
@@ -55,49 +52,25 @@ function actorsReducer(state = initialActors, action) {
       return state;
   }
 }
-// -------------------- COMBINE REDUCERS ------------------------- //
-
 const allReducers = combineReducers({ moviesReducer, actorsReducer });
-
 // -------------------- STORE ------------------------- //
 
-const store = createStore(allReducers);
+const store = createStore(moviesReducer);
 console.log(store);
 
-// -------------------- DISPATCH ACTION------------------------- //
+// -------------------- DISPATCH ------------------------- //
 
 store.dispatch({ type: 'RESET_MOVIE' });
 store.dispatch({ type: 'ADD_MOVIE', item: 'Titanic' });
 store.dispatch({ type: 'DELETE_MOVIE', item: 'Matrix' });
 
-// ----------- DISPATCH WITH ACTION CREATOR -----------  //
+// ------------------------ ACTION CREATOR -------------------------  //
 
 const addMovie = item => ({ type: 'ADD_MOVIE', item });
 store.dispatch(addMovie('Big Lebovski'));
 
-// ------------------ BIND ACTION CREATORS -------------------------------  //
-
-const addActor = item => ({ type: 'ADD_ACTOR', item });
-const resetActors = () => ({ type: 'RESET_ACTORS' });
-
-const actorsActions = bindActionCreators(
-  { add: addActor, reset: resetActors },
-  store.dispatch
-);
-
-actorsActions.reset();
-actorsActions.add('Jan Frycz');
-
-// --------------------------------------- //
-
 const Root = () => {
-  // return <App state={store.getState()} />;
-
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  return <App state={store.getState()} />;
 };
 
-export { store, Root as default };
+export default Root;
